@@ -1,0 +1,1 @@
+require 'ruboid/ruboid'
