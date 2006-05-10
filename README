@@ -2,7 +2,37 @@
 Ruboid is a ruby implementation of Craig Reynolds' Boid alogrithm (http://www.red3d.com/cwr/boids/), which realistically simulates the behaviour of a flock of creatures with a small set of simple rules. See Conrad Parker's page at http://www.vergenet.net/~conrad/boids/pseudocode.html for a more detailed explanation of how the simulation is performed.
 
 ===Operations
+==== Basic operations
+Currently, the library implements the 3 rules descibed by Reynolds. You could create a Flock and give it a few boids like this:
+	flock = Flock.new
+	1.upto(10) do |i|
+  		flock << Boid.new(Vector.new([rand(300),rand(300)]),
+                    		  Vector.new([rand(10)-5,rand(10)-5]))
+	end
+Here I created a flock composed of 10 boids with a random starting position and an initial velocity between -5 and 5. The velocity can be understood as the distance the boid moves per time step.
 
+To move the flock, you must call the method +update_and_move+ on the flock:
+	1.upto(100) do |i|
+    		flock.update_and_move
+	end
+The flock has just moved of 100 steps. You should perform some actions (like drawing the flock) between each update.
+
+==== More operations
+On top of these basic rules, some addition ones have been implemented:
+- +scatter+: Scatters the flock, not as a reaction to a particular obstacle, but for example, as a reaction to a loud noise. It will break the cohesion. To reverse it, you should use +regroup+.
+- +go_to+: Gives a goal to reach to the boids. Boids will have a tendency to go in the direction of this goal. Use +forget_goal+ to reverse it.
+- +bound+: Encourages the boids to stay in a certain area (for example the drawing area). Use +move_freely+ to reverse it.
+- +rebel+: Adds an element of chance to the movement of boids. Use +calm_down+ to reverse it.
+
+==== Examples
+I have included 2 examples in the distribution. One is stand-alone, the other necessitates RMagick and draws an animated GIF.
+
+==== Vector class
+To ease the computations, I have created a Vector class, which can be of any dimension. All the positions and velocities of the boids are in this format. You can create a vector from an array of value like this:
+	v = Vector.new(array)
+And access it like that :
+	v[0]
+	v.each ...
 
 
 ===Installation

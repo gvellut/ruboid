@@ -16,17 +16,23 @@ Flock.class_eval do
   end
 end
 
-
 flock = Flock.new(2)
 
 1.upto(10) do |i|
-  flock << Boid.new(Vector.new([rand(20)-10,rand(20)-10]),
-                    Vector.new([rand(6)-3,rand(6)-3]))
+  flock << Boid.new(Vector.new([rand(300),rand(300)]),
+                    Vector.new([rand(10)-5,rand(10)-5]))
 end
 
 puts "Flock t= 0\n" + flock.to_s + "\n"
 
-1.upto(1000) do |i|
+1.upto(100) do |i|
+  flock.update_and_move
+  puts "Flock t= #{i}\n" + flock.to_s + "\n"
+end
+
+flock.go_to(Vector.new([0,0]))
+
+101.upto(200) do |i|
   flock.update_and_move
   puts "Flock t= #{i}\n" + flock.to_s + "\n"
 end
