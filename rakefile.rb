@@ -24,7 +24,7 @@ spec = Gem::Specification::new do |s|
   s.platform = Gem::Platform::RUBY
 
   s.name = 'Ruboid'
-  s.version = "0.0.1"
+  s.version = "0.0.2"
   s.summary = "Ruby Boid Library"
   s.description ="Ruboid is a ruby implementation of Craig Reynolds' Boid alogrithm (http://www.red3d.com/cwr/boids/), which realistically simulates the behaviour of a flock of creatures with a small set of simple rules."
   s.author = 'Guilhem Vellut' 

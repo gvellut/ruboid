@@ -1,4 +1,4 @@
-=GeoRuby
+=Ruboid
 Ruboid is a ruby implementation of Craig Reynolds' Boid alogrithm (http://www.red3d.com/cwr/boids/), which realistically simulates the behaviour of a flock of creatures with a small set of simple rules. See Conrad Parker's page at http://www.vergenet.net/~conrad/boids/pseudocode.html for a more detailed explanation of how the simulation is performed.
 
 ===Operations
